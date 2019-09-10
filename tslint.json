@@ -1,0 +1,121 @@
+{
+    "rulesDirectory": ["node_modules/tslint-eslint-rules/dist/rules"],
+    "rules": {
+        "prettier": [
+            true,
+            {
+                "printWidth": 80,
+                "tabWidth": 4,
+                "useTabs": false,
+                "semi": true,
+                "singleQuote": true,
+                "trailingComma": "es5",
+                "bracketSpacing": true,
+                "jsxBracketSameLine": false
+            }
+        ],
+        "array-type": false,
+        "ban": false,
+        "ban-types": false,
+        "class-name": true,
+        "curly": [true, "ignore-same-line"],
+        "forin": false,
+        "interface-name": false,
+        "interface-over-type-literal": false,
+        "jsdoc-format": true,
+        "label-position": true,
+        "max-classes-per-file": false,
+        "member-access": false,
+        "member-ordering": [
+            true,
+            "public-before-private",
+            "static-before-instance",
+            "variables-before-functions"
+        ],
+        "only-arrow-functions": false,
+        "no-angle-bracket-type-assertion": false,
+        "no-any": false,
+        "no-arg": true,
+        "no-bitwise": true,
+        "no-conditional-assignment": true,
+        "no-consecutive-blank-lines": false,
+        "no-constant-condition": false,
+        "no-console": [true, "debug", "info", "time", "timeEnd", "trace"],
+        "no-construct": true,
+        "no-parameter-properties": false,
+        "no-control-regex": true,
+        "no-debugger": true,
+        "no-duplicate-case": true,
+        "no-duplicate-variable": true,
+        "no-empty": true,
+        "no-empty-character-class": true,
+        "no-eval": true,
+        "no-ex-assign": false,
+        "no-extra-boolean-cast": true,
+        "no-inferrable-types": false,
+        "no-inner-declarations": [false, "both"],
+        "no-internal-module": true,
+        "no-invalid-regexp": true,
+        "no-irregular-whitespace": true,
+        "no-null-keyword": false,
+        "no-object-literal-type-assertion": false,
+        "no-regex-spaces": true,
+        "no-require-imports": false,
+        "no-shadowed-variable": true,
+        "no-sparse-arrays": true,
+        "no-string-literal": false,
+        "no-submodule-imports": false,
+        "no-switch-case-fall-through": true,
+        "no-this-assignment": false,
+        "no-unused-expression": true,
+        "no-use-before-declare": true,
+        "no-var-keyword": true,
+        "no-var-requires": false,
+        "object-literal-shorthand": false,
+        "object-literal-sort-keys": false,
+        "one-variable-per-declaration": false,
+        "ordered-imports": false,
+        "prefer-conditional-expression": false,
+        "prefer-const": true,
+        "prefer-object-spread": false,
+        "radix": true,
+        "switch-default": true,
+        "triple-equals": [true, "allow-null-check"],
+        "typedef": [
+            false,
+            "call-signature",
+            "parameter",
+            "arrow-parameter",
+            "property-declaration",
+            "variable-declaration",
+            "member-variable-declaration"
+        ],
+        "use-isnan": true,
+        "valid-jsdoc": [
+            false,
+            {
+                "prefer": {
+                    "return": "returns"
+                },
+                "requireReturn": false,
+                "requireParamDescription": false,
+                "requireParamType": false,
+                "requireReturnDescription": false,
+                "requireReturnType": false,
+                "matchDescription": "^[A-Z][A-Za-z0-9\\s]*[.]$"
+            }
+        ],
+        "valid-typeof": true,
+        "variable-name": [
+            false,
+            "check-format",
+            "allow-leading-underscore",
+            "ban-keywords"
+        ]
+    },
+    "extends": [
+        "tslint:latest",
+        "tslint-plugin-prettier",
+        "tslint-config-prettier"
+    ]
+}
