@@ -30,7 +30,6 @@ export class ThreadModel {
         }
 
         const thread = await this.get(threadId);
-        console.log(thread);
         if (!thread) {
             throw new Error(`Thread ${threadId} does not exist!`);
         }

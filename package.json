@@ -3,10 +3,10 @@
     "version": "1.0.0",
     "description": "bff for messaging app",
     "scripts": {
+        "start": "npm install && npm run build:ts && node bin/src/app.js",
+        "start:dev": "npm install && nodemon -x 'npm run start' --watch src/ -L -e ts ",
         "build:ts": "npm run clean && tsc",
         "clean": "rm -rf bin/",
-        "start": "node bin/src/app.js",
-        "start:dev": "npm install && nodemon -x 'npm run build:ts && npm run start' --watch src/ -L -e ts ",
         "test": "jest"
     },
     "dependencies": {
