@@ -39,6 +39,6 @@ class PostgresDB {
 const db = new PostgresDB({
     host: 'localhost',
     port: 5432,
-    database: 'nadinedevich',
+    database: 'postgres',
 });
 export default db;

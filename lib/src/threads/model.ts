@@ -3,7 +3,7 @@ import createLogger from '../logger';
 
 const logger = createLogger('thread-model');
 
-class ThreadModel {
+export class ThreadModel {
     constructor(private mThreadRepo = threadRepo) {}
 
     async create(users: string[]): Promise<string> {
@@ -30,6 +30,10 @@ class ThreadModel {
         }
 
         const thread = await this.get(threadId);
+        console.log(thread);
+        if (!thread) {
+            throw new Error(`Thread ${threadId} does not exist!`);
+        }
         if (thread && thread.users.includes(username)) {
             const success = !!(await this.mThreadRepo.addMessage(threadId, {
                 username,
