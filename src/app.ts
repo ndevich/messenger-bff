@@ -8,7 +8,6 @@ const logger = createLogger('messenger-bff');
 async function start() {
     'use strict';
     try {
-        // init postgres
         await server.start();
     } catch (err) {
         logger.fatal({ err, msg: 'Error on start up' });

@@ -10,8 +10,6 @@
         "test": "jest"
     },
     "dependencies": {
-        "@types/koa-bunyan-logger": "^2.1.1",
-        "@types/koa-convert": "^1.2.2",
         "bunyan": "1.8.12",
         "koa": "2.8.1",
         "koa-bodyparser": "4.2.1",
@@ -19,9 +17,13 @@
         "koa-convert": "1.2.0",
         "koa-cors": "0.0.16",
         "koa-router": "7.4.0",
-        "pg": "7.12.1"
+        "pg": "7.12.1",
+        "ws": "7.1.2"
     },
     "devDependencies": {
+        "@types/koa-bunyan-logger": "2.1.1",
+        "@types/koa-convert": "1.2.2",
+        "@types/ws": "6.0.3",
         "@types/bunyan": "1.8.6",
         "@types/jest": "24.0.18",
         "@types/koa": "2.0.49",
@@ -32,7 +34,7 @@
         "jest": "24.9.0",
         "nodemon": "1.19.2",
         "prettier": "1.18.2",
-        "ts-jest": "^24.0.2",
+        "ts-jest": "24.0.2",
         "tslint": "5.19.0",
         "typescript": "3.6.2"
     }

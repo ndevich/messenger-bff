@@ -1,8 +1,11 @@
+import * as ws from 'ws';
 import * as Koa from 'koa';
 import * as KoaBodyParser from 'koa-bodyparser';
 import * as KoaCompose from 'koa-compose';
 import createLogger from './logger';
 import threadController from './threads/controller';
+import userController from './users/controller';
+
 const convert = require('koa-convert');
 const cors = require('koa-cors');
 
@@ -61,12 +64,39 @@ class Server {
                     }),
                 ),
                 KoaBodyParser(),
+
                 threadController.getRoutes(),
+                userController.getRoutes(),
             ]),
         );
     }
 
     async start() {
+        const webSocketServer = new ws.Server({ port: 40405 });
+        webSocketServer.on('connection', webSocket => {
+            webSocket.on('message', async message => {
+                const jsonMessage = JSON.parse(message.toString());
+                const messsageWithTime = {
+                    ...jsonMessage,
+                    time: Date.now(),
+                };
+
+                try {
+                    await threadController.saveMessageFromWs(messsageWithTime);
+                    webSocket.send(JSON.stringify({ success: true }));
+                } catch (e) {
+                    webSocket.send(
+                        JSON.stringify({ success: false, error: e.message }),
+                    );
+                    return;
+                }
+
+                webSocketServer.clients.forEach(c =>
+                    c.send(JSON.stringify(messsageWithTime)),
+                );
+            });
+        });
+
         return new Promise<any>((resolve: any, _reject: any) => {
             this.server.listen(40404, () => {
                 logger.info(`Messenger BFF listening at 40404`);

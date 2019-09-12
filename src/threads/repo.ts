@@ -79,9 +79,25 @@ class ThreadRepository {
             : null;
     }
 
+    async getThreadsByUser(userId: string): Promise<Thread[]> {
+        let result: any;
+        try {
+            result = await db.query(`
+                SELECT * FROM ${this.tableName}
+                WHERE users @> ARRAY['${userId}']::TEXT[]
+            `);
+        } catch (e) {
+            logger.error(e, `Select unsuccessful for id ${userId}`);
+            return null;
+        }
+
+        return result.rows ? result.rows : null;
+    }
+
     async addMessage(id: string, entry: Message): Promise<Thread> {
         let result: any;
 
+        console.log(entry);
         try {
             result = await db.query(`
                 UPDATE ${this.tableName}

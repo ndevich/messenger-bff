@@ -20,6 +20,7 @@ class ThreadModel {
         threadId: string,
         username: string,
         message: string,
+        time?: Date,
     ): Promise<boolean> {
         if (!threadId || !username || !message) {
             logger.error(
@@ -33,7 +34,7 @@ class ThreadModel {
             const success = !!(await this.mThreadRepo.addMessage(threadId, {
                 username,
                 message,
-                time: new Date(),
+                time: time || new Date(),
             }));
 
             if (success) {

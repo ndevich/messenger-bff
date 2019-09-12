@@ -6,6 +6,15 @@ class ThreadController extends BaseRouter {
         super('/threads');
     }
 
+    async saveMessageFromWs(message: any) {
+        return threadModel.send(
+            message.threadId,
+            message.username,
+            message.message,
+            message.time,
+        );
+    }
+
     mapRoutes() {
         this.router.post('create', '/', async (ctx, next) => {
             if (ctx.request.body && ctx.request.body.users) {
