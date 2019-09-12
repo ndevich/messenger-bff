@@ -3,7 +3,7 @@ import threadModel from './model';
 
 class ThreadController extends BaseRouter {
     constructor() {
-        super('/thread');
+        super('/threads');
     }
 
     mapRoutes() {
@@ -15,7 +15,7 @@ class ThreadController extends BaseRouter {
                         threadId: id,
                     };
                 } else {
-                    ctx.status = 500;
+                    ctx.response.status = 500;
                 }
             } else {
                 ctx.response.body = {

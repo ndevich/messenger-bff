@@ -33,6 +33,7 @@ class ThreadModel {
             const success = !!(await this.mThreadRepo.addMessage(threadId, {
                 username,
                 message,
+                time: new Date(),
             }));
 
             if (success) {

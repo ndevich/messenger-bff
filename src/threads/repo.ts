@@ -6,6 +6,7 @@ const logger = createLogger('thread-repo');
 export interface Message {
     username: string;
     message: string;
+    time: Date;
 }
 
 export interface Thread {
@@ -33,11 +34,20 @@ class ThreadRepository {
 
     async createThread(users: string[]): Promise<Thread> {
         let result: any;
+
+        let sqlFriendlyStr = '[';
+        users.forEach(
+            (u, i) =>
+                (sqlFriendlyStr +=
+                    `'${u.trim()}'` + (i !== users.length - 1 ? ',' : '')),
+        );
+        sqlFriendlyStr += ']';
+
         try {
             result = await db.query(`
                 INSERT INTO ${this.tableName} (users, messages)
                 VALUES (
-                    ARRAY ${JSON.stringify(users)},
+                    ARRAY ${sqlFriendlyStr},
                     ARRAY[]::TEXT[]
                 )
                 RETURNING id;

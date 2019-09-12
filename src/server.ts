@@ -3,6 +3,8 @@ import * as KoaBodyParser from 'koa-bodyparser';
 import * as KoaCompose from 'koa-compose';
 import createLogger from './logger';
 import threadController from './threads/controller';
+const convert = require('koa-convert');
+const cors = require('koa-cors');
 
 const koaLogger = require('koa-bunyan-logger');
 
@@ -52,6 +54,12 @@ class Server {
                 koaLogger.requestIdContext(),
                 koaLogger.timeContext(),
                 logRequest,
+                convert(
+                    cors({
+                        origin: 'http://localhost:8080',
+                        credentials: true,
+                    }),
+                ),
                 KoaBodyParser(),
                 threadController.getRoutes(),
             ]),
