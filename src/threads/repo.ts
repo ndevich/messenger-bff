@@ -97,7 +97,6 @@ class ThreadRepository {
     async addMessage(id: string, entry: Message): Promise<Thread> {
         let result: any;
 
-        console.log(entry);
         try {
             result = await db.query(`
                 UPDATE ${this.tableName}
